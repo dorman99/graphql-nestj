@@ -10,7 +10,8 @@ type CreatePokemonDto {
 }
 
 type Query {
-  helloPokemon: String!
+  findAll: [CreatePokemonDto!]!
+  find(id: String!): CreatePokemonDto
 }
 
 type Mutation {

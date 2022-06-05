@@ -15,4 +15,8 @@ export class PokemonService {
   async getPokemons(): Promise<Pokemon[]> {
     return await this.repo.find();
   }
+
+  async find(id: string): Promise<Pokemon> {
+    return await this.repo.findOne({ where: { id } });
+  }
 }

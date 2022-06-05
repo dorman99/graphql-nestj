@@ -3,7 +3,7 @@ import { Field, ObjectType } from "@nestjs/graphql";
 @ObjectType()
 export class CreatePokemonDto {
     @Field()
-    id: string;
+    id?: string;
 
     @Field()
     name: string;
