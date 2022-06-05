@@ -1,0 +1,24 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type CreatePokemonDto {
+  id: String!
+  name: String!
+  type: String!
+  pokedex: Float!
+}
+
+type Query {
+  helloPokemon: String!
+}
+
+type Mutation {
+  createPokemon(data: InputPokemon!): CreatePokemonDto!
+}
+
+input InputPokemon {
+  name: String!
+  type: String!
+  pokedex: Float!
+}
