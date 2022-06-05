@@ -1,10 +1,10 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { CreatePokemonDto } from './dto/create_pokemon.dto';
-import { InputPokemon } from './input/pokemon.input';
+import { CreatePokemonDto } from '../dto/create_pokemon.dto';
+import { InputPokemon } from '../input/pokemon.input';
 import { Pokemon } from './pokemon.entity';
 import { PokemonService } from './pokemon.service';
 
-@Resolver((of) => Pokemon)
+@Resolver('Pokemon')
 export class PokemonResolver {
   constructor(private pokemonService: PokemonService) {}
 
@@ -18,7 +18,7 @@ export class PokemonResolver {
     return await this.pokemonService.getPokemons();
   }
 
-  @Query(() => CreatePokemonDto, {nullable: true})
+  @Query(() => CreatePokemonDto, { nullable: true })
   async find(@Args('id', { type: () => String }) id: string) {
     return await this.pokemonService.find(id);
   }

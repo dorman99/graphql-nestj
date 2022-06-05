@@ -1,7 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { TypeOrmModuleOptions } from "@nestjs/typeorm";
-import { Pokemon } from "src/modules/pokemon.entity";
+import { Pokemon } from "src/modules/pokemon/pokemon.entity";
+import { Trainer } from "src/modules/trainer/trainer.entity";
 
 @Injectable()
 export class MySQLConfigService {
@@ -14,7 +15,8 @@ export class MySQLConfigService {
   public logging: boolean;
 
   public entities = [
-      Pokemon
+      Pokemon,
+      Trainer
   ];
 
   public synchronize = false;

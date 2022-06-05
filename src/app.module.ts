@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { PokemonModule } from './modules/pokemon.module';
+import { PokemonModule } from './modules/pokemon/pokemon.module';
 import { MySQLConfigModule } from './configs/mysql/mysql.config.module';
 import { MySQLConfigService } from './configs/mysql/mysql.config.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { TrainerModule } from './modules/trainer/trainer.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 const typeOrmInit = () => {
   return TypeOrmModule.forRootAsync({
@@ -21,7 +23,9 @@ const typeOrmInit = () => {
       driver: ApolloDriver,
       autoSchemaFile: 'schema.gpl'
     }),
-    PokemonModule
+    PokemonModule,
+    TrainerModule,
+    AuthModule
   ],
 })
 export class AppModule {}

@@ -9,6 +9,11 @@ type CreatePokemonDto {
   pokedex: Float!
 }
 
+type SignUpDto {
+  id: String!
+  username: String!
+}
+
 type Query {
   findAll: [CreatePokemonDto!]!
   find(id: String!): CreatePokemonDto
@@ -16,10 +21,16 @@ type Query {
 
 type Mutation {
   createPokemon(data: InputPokemon!): CreatePokemonDto!
+  login(data: LoginInput!): SignUpDto
+  register(username: String!): SignUpDto
 }
 
 input InputPokemon {
   name: String!
   type: String!
   pokedex: Float!
+}
+
+input LoginInput {
+  username: String!
 }
