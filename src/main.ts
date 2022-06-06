@@ -6,3 +6,11 @@ async function bootstrap() {
   await app.listen(3000);
 }
 bootstrap();
+
+
+/**
+ * TODO
+ * - have some mapping response with graphql (?) is it possible ?
+ * - caching with graphql
+ * - containerzation
+ */
