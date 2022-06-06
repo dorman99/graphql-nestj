@@ -21,7 +21,7 @@ type Query {
 
 type Mutation {
   createPokemon(data: InputPokemon!): CreatePokemonDto!
-  login(data: LoginInput!): SignUpDto
+  login(data: LoginInput!): String!
   register(username: String!): SignUpDto
 }
 

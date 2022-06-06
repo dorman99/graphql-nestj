@@ -7,7 +7,7 @@ import { LoginInput } from './input/login.input';
 export class AuthResolver {
   constructor(private authService: AuthService) {}
 
-  @Mutation(() => SignUpDto, { nullable: true })
+  @Mutation(() => String)
   async login(@Args('data') data: LoginInput) {
     return await this.authService.login(data.username);
   }

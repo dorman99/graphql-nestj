@@ -7,6 +7,8 @@ import { MySQLConfigService } from './configs/mysql/mysql.config.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TrainerModule } from './modules/trainer/trainer.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { JwtModule } from '@nestjs/jwt';
+import { JWT } from './common/constant';
 
 const typeOrmInit = () => {
   return TypeOrmModule.forRootAsync({
@@ -21,11 +23,11 @@ const typeOrmInit = () => {
     typeOrmInit(),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: 'schema.gpl'
+      autoSchemaFile: 'schema.gpl',
     }),
     PokemonModule,
     TrainerModule,
-    AuthModule
+    AuthModule,
   ],
 })
 export class AppModule {}

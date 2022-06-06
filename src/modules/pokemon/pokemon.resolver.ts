@@ -1,6 +1,8 @@
+import { UseGuards } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { CreatePokemonDto } from '../dto/create_pokemon.dto';
-import { InputPokemon } from '../input/pokemon.input';
+import { JwtAuthGuard } from 'src/common/auth/guard/jwt.guard';
+import { CreatePokemonDto } from './dto/create_pokemon.dto';
+import { InputPokemon } from './input/pokemon.input';
 import { Pokemon } from './pokemon.entity';
 import { PokemonService } from './pokemon.service';
 
@@ -14,6 +16,7 @@ export class PokemonResolver {
   }
 
   @Query(() => [CreatePokemonDto])
+  @UseGuards(JwtAuthGuard)
   async findAll(): Promise<Pokemon[]> {
     return await this.pokemonService.getPokemons();
   }
