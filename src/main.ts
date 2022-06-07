@@ -10,7 +10,7 @@ bootstrap();
 
 /**
  * TODO
- * - have some mapping response with graphql (?) is it possible ?
- * - caching with graphql
+ * - bisa di pasang interseptor ga ya buat resolver
+ * - scalar itu apa ?
  * - containerzation
  */
