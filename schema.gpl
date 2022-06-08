@@ -10,11 +10,11 @@ type CreatePokemonDto {
 }
 
 type Query {
-  findAll: FindPokemons!
+  findAll: FindPokemonsResult!
   find(id: String!): CreatePokemonDto
 }
 
-union FindPokemons = FindPokemonsDto | ErrorDto
+union FindPokemonsResult = FindPokemonsDto | ErrorDto
 
 type FindPokemonsDto {
   pokemons: [CreatePokemonDto!]!

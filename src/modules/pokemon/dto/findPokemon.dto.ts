@@ -5,11 +5,14 @@ import { CreatePokemonDto } from './createPokemon.dto';
 
 @ObjectType()
 export class FindPokemonsDto {
+  constructor(pokemons: Pokemon[]) {
+    this.pokemons = pokemons;
+  }
   @Field(() => [CreatePokemonDto])
   pokemons: Pokemon[];
 }
 
 export const FindPokemonsResult = createUnionType({
-  name: 'FindPokemons',
+  name: 'FindPokemonsResult',
   types: () => [FindPokemonsDto, ErrorDto] as const,
 });

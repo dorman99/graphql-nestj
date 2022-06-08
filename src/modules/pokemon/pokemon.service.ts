@@ -1,6 +1,7 @@
 import { Injectable, UseGuards } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { FindPokemonsDto } from './dto/findPokemon.dto';
 import { InputPokemon } from './input/pokemon.input';
 import { Pokemon } from './pokemon.entity';
 
@@ -12,8 +13,9 @@ export class PokemonService {
     return await this.repo.save(createPokemonDto);
   }
 
-  async getPokemons(): Promise<Pokemon[]> {
-    return await this.repo.find();
+  async getPokemons(): Promise<FindPokemonsDto> {
+    const pokemons = await this.repo.find();
+    return new FindPokemonsDto(pokemons)
   }
 
   async find(id: string): Promise<Pokemon> {
