@@ -10,8 +10,19 @@ type CreatePokemonDto {
 }
 
 type Query {
-  findAll: [CreatePokemonDto!]!
+  findAll: FindPokemons!
   find(id: String!): CreatePokemonDto
+}
+
+union FindPokemons = FindPokemonsDto | ErrorDto
+
+type FindPokemonsDto {
+  pokemons: [CreatePokemonDto!]!
+}
+
+type ErrorDto {
+  statusCode: Float!
+  message: String!
 }
 
 type Mutation {
@@ -30,11 +41,6 @@ union LoginResult = LoginDto | ErrorDto
 
 type LoginDto {
   token: String!
-}
-
-type ErrorDto {
-  statusCode: Float!
-  message: String!
 }
 
 input LoginInput {
