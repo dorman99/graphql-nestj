@@ -9,6 +9,7 @@ import { TrainerModule } from './modules/trainer/trainer.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { JwtModule } from '@nestjs/jwt';
 import { JWT } from './common/constant';
+import { TransactionModule } from './modules/transaction/transaction.module';
 
 const typeOrmInit = () => {
   return TypeOrmModule.forRootAsync({
@@ -23,11 +24,12 @@ const typeOrmInit = () => {
     typeOrmInit(),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: 'schema.gpl',
+      autoSchemaFile: 'schema.gql',
     }),
     PokemonModule,
     TrainerModule,
     AuthModule,
+    TransactionModule
   ],
 })
 export class AppModule {}

@@ -9,7 +9,7 @@ export class HttpExceptionFilter implements GqlExceptionFilter {
   }
 
   private _genrateError(exception) {
-    const statusCode = exception.response.statusCode;
+    const statusCode = exception.status;
     const message = exception.response.message;
     return new ErrorDto(statusCode, message);
   }

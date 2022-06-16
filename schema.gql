@@ -12,6 +12,7 @@ type CreatePokemonDto {
 type Query {
   findAll: FindPokemonsResult!
   find(id: String!): CreatePokemonDto
+  getTransactionDetail(orderId: String!): TransactionResult!
 }
 
 union FindPokemonsResult = FindPokemonsDto | ErrorDto
@@ -25,10 +26,20 @@ type ErrorDto {
   message: String!
 }
 
+union TransactionResult = TransactionDto | ErrorDto
+
+type TransactionDto {
+  customerName: String!
+  orderId: String!
+  paymentId: String!
+  paymentStatus: String!
+}
+
 type Mutation {
   createPokemon(data: InputPokemon!): CreatePokemonDto!
   login(data: LoginInput!): LoginResult!
   register(username: String!): SignupResult!
+  createTransaction(data: CreateTransactionInput!): CreateTransactionResult!
 }
 
 input InputPokemon {
@@ -52,4 +63,11 @@ union SignupResult = SignUpDto | ErrorDto
 type SignUpDto {
   id: String!
   username: String!
+}
+
+union CreateTransactionResult = TransactionDto | ErrorDto
+
+input CreateTransactionInput {
+  amount: Float!
+  name: String!
 }

@@ -12,7 +12,7 @@ bootstrap();
 
 /**
  * TODO
- * - bisa di pasang interseptor ga ya buat resolver
+ * - bisa di pasang interseptor ga ya buat resolver [v]
  * - scalar itu apa ?
  * - containerzation
  */

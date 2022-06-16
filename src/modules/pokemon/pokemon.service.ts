@@ -16,7 +16,6 @@ export class PokemonService {
   async getPokemons(): Promise<Pokemon[]> {
     const pokemons = await this.repo.find();
     return pokemons;
-    // return new FindPokemonsDto(pokemons)
   }
 
   async find(id: string): Promise<Pokemon> {
